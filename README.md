@@ -18,9 +18,6 @@ The average foodie (a person who loves to explore the food scene/loves trying ou
 
 
 ### Features
-
-List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
-
  - Users can search for a restaurant on their Bean Map with a search tool that utilizes the Yelp API, and upon clicking on the restaurant, a form will open up where users can rate the place out of 5 beans, and then add notes on their experience. 
  - Once a user is finished completing their rating/ comments, the user can then press "Add bean", which will add an image of a bean on the map where the restaurant they have just rated is. 
  -  If a user would like to visit a potential restaurant, users can also search up a restaurant, and then press "Add as wish bean" to record the restaurant on their Bean map (with the bean asset not filled in yet).
@@ -34,7 +31,7 @@ List the functionality that your app will include. These can be written as user 
 - CSS Library - Tailwind
 -React 
 
- Back-end
+#### Back-end
 -Express
 -Knex.js 
 
@@ -46,7 +43,6 @@ Google Maps API to render a custon map
 
 ### Sitemap
 
-List the pages of your app with brief descriptions. You can show this visually, or write it out.
 Home Page (containing bean map)
 Site Page
 Page/form component when adding a bean (restaurant review/rating).
@@ -59,8 +55,6 @@ Sign-up Page
 Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 Please see images for mockups
 ### Data
-
-Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
 
 A user will have an ID, name, email, and restaurants data, and within the restaurant data, the restaurant is either a rated bean, or a wish bean. The restuarnt data also includes the business name, address, and longitude/latitude coordinates.
 
@@ -105,8 +99,6 @@ PUT User - Add rated restaurant, or visited restaurant
 
 ### Auth
 
-Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
-
 Yes, it will include login of a user and a user profile. As authentication is a subject currently still being covered, I will opt to use at least passport.js 
 
 ## Roadmap
@@ -132,8 +124,6 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
   
 ## Nice-to-haves
 
-Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
-
 - Filter bean map by geographic locations, such as cities (Calgary, Vancouver etc.)
 - Have a list of "wish beans" for restaurants on the map the user would like to visit.
 - Have the map be able to display both where beans and rated beans at the same time.
@@ -142,4 +132,3 @@ Your project will be marked based on what you committed to in the above document
 - Be able to add other users to your network, to view and share their bean map
 - Have hidden and non-hidden bean ratings
 - Be able to comment on someone's bean map
--
