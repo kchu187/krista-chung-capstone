@@ -6,14 +6,13 @@ WhereBean is an app that will help you document and rate your restaurant journey
 
 As for why the mascot is Beans - WhereBean is a play off words for "Where been", as in, where have you been?
 
-### The Why  - Why is your app needed? Background information around any pain points or other reasons.
+### The Why 
 WhereBean adds a fun twist to documenting your food adventures. If you're a person who eats out a lot, or even rarely eats out, it can be really easy to forget what exactly you ordered - especially if something did not stand out the first time. You ever order something again at a restaurant and then realize it was the same dish you swore you wouldn't get when you were there  the first time, but you forgot what the name was? Or, the restaurant makes things differently (different sugar levels, spiciness levels, etc) and, for an example,  a mild spiciness at one restuarant could be another restaurant's super hot. Wherebean provides you with space to document your experiences, so you can make the most out of each dining endeavor. 
 
 WhereBean also gives you the opportunity to visualize where you have been - by adding more and more to your bean map, you can start to visualize the places you have been - which can help a person decide where to go next. With the option to place "Wish beans", which are places a person wants to go, they can quickly pull up their Bean map if they are in the area to see if they are nearby any places they would like to try. If you live in a larger city with a growing restaurant industry (such as Calgary and Vancouver) - Wherebean can help you keep track of all the restuarants you'd like to try.
 
 
 ### User Profile
-Who will use your app? How will they use it? Any special considerations that your app must take into account.
 
 The average foodie (a person who loves to explore the food scene/loves trying out new food in general), a person who eats out a lot, and also people who would like to journal/document their experiences. As Wherebean will have a fun UI of "beans" on the map, it will also be for individuals who enjoy a fun twist on documenting their experiences, as well as the completionist who wants to "try them all". 
 
@@ -24,23 +23,24 @@ List the functionality that your app will include. These can be written as user 
 
  - Users can search for a restaurant on their Bean Map with a search tool that utilizes the Yelp API, and upon clicking on the restaurant, a form will open up where users can rate the place out of 5 beans, and then add notes on their experience. 
  - Once a user is finished completing their rating/ comments, the user can then press "Add bean", which will add an image of a bean on the map where the restaurant they have just rated is. 
- - - If a user would like to visit a potential restaurant, users can also search up a restaurant, and then press "Add as wish bean" to record the restaurant on their Bean map (with the bean asset not filled in yet).
+ -  If a user would like to visit a potential restaurant, users can also search up a restaurant, and then press "Add as wish bean" to record the restaurant on their Bean map (with the bean asset not filled in yet).
+ -  A user will be able to see a list of their rated beans/wish beans on the right side of the bean map in a list (or below in mobile responsiveness).
+ -  Clicking on a restaurant in this list will open up the form that was previously filled out to rate the restaurant, and users can choose to edit this form.
+ -  Users can sign up for an account, and log in once an account is created with a log-in/sign-up page.
 ## Implementation
 
 ### Tech Stack
 
-List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
 - CSS Library - Tailwind
 -React 
 
-Back-end
+ Back-end
 -Express
 -Knex.js 
 
 
 ### APIs
 
-List any external sources of data that will be used in your app.
 Yelp Fusion API for Place/restaurant data
 Google Maps API to render a custon map
 
@@ -71,7 +71,6 @@ Adding a bean onto the bean map (aka, rating a restaurant) will create a POST re
 
 ### Endpoints
 
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 GET user
 
     {  "id":  1, 
@@ -130,6 +129,7 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 - Create bean list component for all list of beans
 - Style bean list
 - Style profile page
+  
 ## Nice-to-haves
 
 Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
