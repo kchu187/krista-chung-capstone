@@ -18,7 +18,7 @@ The average foodie (a person who loves to explore the food scene/loves trying ou
 
 
 ### Features
- - Users can search for a restaurant on their Bean Map with a search tool that utilizes the Yelp API, and upon clicking on the restaurant, a form will open up where users can rate the place out of 5 beans, and then add notes on their experience. 
+ - Users can search for a restaurant on their Bean Map with a search tool that utilizes the Yelp API, and upon clicking on the restaurant, a form will open up where users can rate the place out of 5 beans, and then add notes on their experience. Note that the Yelp API has a limitation of 300 API calls per day!
  - Once a user is finished completing their rating/ comments, the user can then press "Add bean", which will add an image of a bean on the map where the restaurant they have just rated is. 
  -  If a user would like to visit a potential restaurant, users can also search up a restaurant, and then press "Add as wish bean" to record the restaurant on their Bean map (with the bean asset not filled in yet).
  -  A user will be able to see a list of their rated beans/wish beans on the right side of the bean map in a list (or below in mobile responsiveness).
@@ -28,7 +28,7 @@ The average foodie (a person who loves to explore the food scene/loves trying ou
 
 ### Tech Stack
 
-- CSS Library - Tailwind
+- CSS Library - Materials UI
 -React 
 
 #### Back-end
@@ -38,7 +38,7 @@ The average foodie (a person who loves to explore the food scene/loves trying ou
 
 ### APIs
 
-Yelp Fusion API for Place/restaurant data
+Yelp Fusion API for Place/restaurant data (Note that the Yelp API has a limitation of 300 API calls per day!)
 Google Maps API to render a custon map
 
 ### Sitemap
@@ -91,7 +91,6 @@ POST - Create User
           "name":  "Krista Chung", 
            "email":  "kchung187@gmail.com",  
       
-              "beans": [],
               }
 
 PUT User - Add rated restaurant, or visited restaurant
@@ -99,7 +98,7 @@ PUT User - Add rated restaurant, or visited restaurant
 
 ### Auth
 
-Yes, it will include login of a user and a user profile. As authentication is a subject currently still being covered, I will opt to use at least passport.js 
+Authentication won't be implemented in Phase 1, but will be under nice-to-have. We will hardcode the users and have a "log-in" page for Phase 1 to demonstrate the user log-in flow.
 
 ## Roadmap
 
@@ -109,8 +108,9 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 - Initial project proposal handed in, receive feedback from TA
 - Set-up initial repros, including both front-end and back-end. 
 - Seed initial databases with sample data and set-up data base
-- Complete User log-in/sign-up front -end forms styling +responsiveness
+- Complete User log-in front -end forms styling +responsiveness. (Mobile first, 3 endpoints).
 - Incorporate Google Maps API + Yelp API onto Front-end Home page, and try to have Searching functionality work for a restaurant name
+
 ### Sprint -2 April 15-22
 - Complete Front-end Home page styling +responsiveness
 -- Header + footer components, responsiveness and styling
@@ -125,7 +125,7 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 ## Nice-to-haves
 
 - Filter bean map by geographic locations, such as cities (Calgary, Vancouver etc.)
-- Have a list of "wish beans" for restaurants on the map the user would like to visit.
+- Implement authentication of the App.
 - Have the map be able to display both where beans and rated beans at the same time.
 - Create an interactive bean jar that, as more restaurants are rated (more is added to the bean map), the amount of beans on the bean map can also be shown in a little bean jar. This bean jar can be shaken and you can see which restaurant you'd like to try again (or try new restaurants from your restaurant to-go list, if that is implemented).
 
