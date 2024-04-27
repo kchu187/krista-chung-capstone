@@ -3,11 +3,12 @@ import "./BeanMap.scss";
 import { Loader } from "@googlemaps/js-api-loader";
 import Bean from "../../assets/images/bean.png";
 import SearchBar from "../SearchBar/SearchBar";
+
 const googleMapsLoader = new Loader({
   apiKey: "AIzaSyD3hrKzV6JPwWbe_1oAowzXdnpTsOwaZXA",
   version: "weekly",
 });
-// Use and customize Google's provided Javascript code into states
+
 function MapComponent({ center, zoom }) {
   const [map, setMap] = useState(null);
   const mapContainerRef = useRef(null);
@@ -31,6 +32,7 @@ function MapComponent({ center, zoom }) {
         console.error("Error loading Google Maps API:", error);
       });
   }, [center, zoom]);
+
   const addMarker = (location, map) => {
     const marker = new window.google.maps.Marker({
       position: location,
@@ -46,9 +48,12 @@ function MapComponent({ center, zoom }) {
 }
 
 function BeanMap() {
+  const handleSearch = (searchResults) => {
+    console.log("Search results:", searchResults);
+  };
   return (
     <section className="bean-map">
-      <SearchBar />
+      <SearchBar onSearch={handleSearch} />
       <MapComponent
         center={{ lat: 51.041083366219205, lng: -114.06598360272451 }}
         zoom={11.5}

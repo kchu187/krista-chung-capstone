@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -14,18 +15,18 @@ function SearchBar({ onSearch }) {
 
     try {
       const response = await fetch(
-        `https://api.yelp.com/v3/businesses/search?location=calgary&term=${searchTerm}&sort_by=best_match&limit=20`,
+        `http://localhost:3306/api/yelp/search?term=${searchTerm}&location=calgary`,
         {
-          mode: "no-cors",
           headers: {
             Authorization:
               "ljQe5jwVEr05efrSFfcKgcvBnwgUP2XSRyNnx8Yjpdap7kApeRefiHAeKOx_3ObKiZQtLRwTYDt3YvPGUxv_tNkdaWhI4fReG3Pko9Q4-ZVG-GLpCm_jdOXi0t0UZnYx",
-            accept: "application/json",
           },
         }
       );
+
       const data = await response.json();
-      onSearch(data.name);
+      setSearchResults(data.businesses);
+      onSearch(data.businesses);
     } catch (error) {
       console.error("Error fetching data from the Yelp API", error);
     } finally {
