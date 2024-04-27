@@ -12,6 +12,7 @@ function MapComponent({ center, zoom }) {
   const [map, setMap] = useState(null);
   const mapContainerRef = useRef(null);
   const markers = [];
+
   useEffect(() => {
     googleMapsLoader
       .load()
@@ -32,6 +33,14 @@ function MapComponent({ center, zoom }) {
       });
   }, [center, zoom]);
 
+  useEffect(() => {
+    console.log("Center updated:", center);
+
+    if (map) {
+      map.setCenter(center); // Update map center when center changes
+    }
+  }, [center]);
+
   const addMarker = (location, map) => {
     const marker = new window.google.maps.Marker({
       position: location,
@@ -46,13 +55,36 @@ function MapComponent({ center, zoom }) {
   return <div ref={mapContainerRef} className="map"></div>;
 }
 
-function BeanMap() {
+function BeanMap({ selectedResult }) {
+  //Update the map center (make it move) when a result is clicked - but default is Calgary
+  const [mapCenter, setMapCenter] = useState({
+    lat: 51.041083366219205,
+    lng: -114.06598360272451,
+  });
+  useEffect(() => {
+    // Check to ensure there are results, and a result was clicked
+    if (selectedResult && selectedResult.coordinates) {
+      console.log("Selected result coordinates:", selectedResult.coordinates);
+
+      const { latitude, longitude } = selectedResult.coordinates;
+
+      console.log("Updating map center:", { lat: latitude, lng: longitude });
+      setMapCenter({ lat: latitude, lng: longitude });
+    }
+  }, [selectedResult]);
+
+  // If there is no results selected, render default map
+  if (!selectedResult) {
+    return (
+      <section className="bean-map">
+        <MapComponent center={mapCenter} zoom={12} />
+      </section>
+    );
+  }
+  // if there is a selected result, move the map to the selected coordinate
   return (
     <section className="bean-map">
-      <MapComponent
-        center={{ lat: 51.041083366219205, lng: -114.06598360272451 }}
-        zoom={11.5}
-      />
+      <MapComponent center={mapCenter} zoom={17} />
     </section>
   );
 }
