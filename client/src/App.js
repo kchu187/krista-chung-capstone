@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import BeanMap from "./components/BeanMap/BeanMap";
+import HomePage from "./Pages/HomePage/HomePage";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<BeanMap />} />{" "}
+        <Route path="/" element={<HomePage />} />{" "}
       </Routes>
     </BrowserRouter>
   );
