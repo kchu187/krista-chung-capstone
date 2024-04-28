@@ -3,6 +3,8 @@ import "./BeanMap.scss";
 import { Loader } from "@googlemaps/js-api-loader";
 import Bean from "../../assets/images/bean.png";
 import BeanInfoBox from "../BeanInfoBox/BeanInfoBox";
+import AddBeanForm from "../AddBeanForm/AddBeanForm";
+
 const googleMapsLoader = new Loader({
   apiKey: "AIzaSyD3hrKzV6JPwWbe_1oAowzXdnpTsOwaZXA",
   version: "weekly",
@@ -34,8 +36,6 @@ function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
   }, [center, zoom]);
 
   useEffect(() => {
-    console.log("Center updated:", center);
-
     if (map) {
       map.setCenter(center); // Update map center when center changes
     }
@@ -52,7 +52,6 @@ function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
     });
     markers.push(marker);
   };
-  console.log("Selected result:", selectedResult);
 
   return <div ref={mapContainerRef} className="map"></div>;
 }
@@ -65,6 +64,10 @@ function BeanMap({ selectedResult }) {
     lat: 51.041083366219205,
     lng: -114.06598360272451,
   });
+
+  //states for showing the BeanForm
+  const [showAddBeanForm, setShowAddBeanForm] = useState(false);
+
   useEffect(() => {
     // Check to ensure there are results, and a result was clicked
     if (selectedResult && selectedResult.coordinates) {
@@ -76,6 +79,16 @@ function BeanMap({ selectedResult }) {
       setMapCenter({ lat: latitude, lng: longitude });
     }
   }, [selectedResult]);
+
+  const handleAddBean = () => {
+    setShowAddBeanForm(true); // Show the AddBeanForm when "Add a Bean" is clicked
+  };
+
+  const handleFormSubmit = (formData) => {
+    console.log("Form submitted with data:", formData);
+    // Handle logic upon form submission (add)
+    setShowAddBeanForm(false); // Hide the AddBeanForm after submission
+  };
 
   // If there is no results selected, render default map
   if (!selectedResult) {
@@ -92,9 +105,9 @@ function BeanMap({ selectedResult }) {
       <BeanInfoBox
         restaurant={selectedResult}
         onClose={() => console.log("Close BeanInfoBox")}
-        onAddBean={(restaurant) => console.log("Add bean", restaurant)}
+        onAddBean={handleAddBean}
       />
-      ;
+      {showAddBeanForm && <AddBeanForm onSubmit={handleFormSubmit} />}
     </section>
   );
 }
