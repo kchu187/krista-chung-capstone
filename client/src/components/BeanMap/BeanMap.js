@@ -107,7 +107,12 @@ function BeanMap({ selectedResult }) {
         onClose={() => console.log("Close BeanInfoBox")}
         onAddBean={handleAddBean}
       />
-      {showAddBeanForm && <AddBeanForm onSubmit={handleFormSubmit} />}
+      {showAddBeanForm && (
+        <AddBeanForm
+          onSubmit={handleFormSubmit}
+          restaurantName={selectedResult ? selectedResult.name : ""}
+        />
+      )}
     </section>
   );
 }
