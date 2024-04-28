@@ -15,7 +15,7 @@ function SearchBar({ onSearch }) {
 
     try {
       const response = await fetch(
-        `http://localhost:3306/api/yelp/search?term=${searchTerm}&location=calgary`,
+        `http://localhost:8080/api/yelp/search?term=${searchTerm}&location=calgary`,
         {
           headers: {
             Authorization:

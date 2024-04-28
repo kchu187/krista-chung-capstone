@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import "./BeanMap.scss";
 import { Loader } from "@googlemaps/js-api-loader";
 import Bean from "../../assets/images/bean.png";
-
+import BeanInfoBox from "../BeanInfoBox/BeanInfoBox";
 const googleMapsLoader = new Loader({
   apiKey: "AIzaSyD3hrKzV6JPwWbe_1oAowzXdnpTsOwaZXA",
   version: "weekly",
 });
 
-function MapComponent({ center, zoom }) {
+function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
   const [map, setMap] = useState(null);
   const mapContainerRef = useRef(null);
   const markers = [];
@@ -52,10 +52,14 @@ function MapComponent({ center, zoom }) {
     });
     markers.push(marker);
   };
+  console.log("Selected result:", selectedResult);
+
   return <div ref={mapContainerRef} className="map"></div>;
 }
 
 function BeanMap({ selectedResult }) {
+  console.log("Selected result:", selectedResult);
+
   //Update the map center (make it move) when a result is clicked - but default is Calgary
   const [mapCenter, setMapCenter] = useState({
     lat: 51.041083366219205,
@@ -85,6 +89,12 @@ function BeanMap({ selectedResult }) {
   return (
     <section className="bean-map">
       <MapComponent center={mapCenter} zoom={17} />
+      <BeanInfoBox
+        restaurant={selectedResult}
+        onClose={() => console.log("Close BeanInfoBox")}
+        onAddBean={(restaurant) => console.log("Add bean", restaurant)}
+      />
+      ;
     </section>
   );
 }
