@@ -2,13 +2,13 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-
 const app = express();
 const PORT = process.env.PORT || 3306;
 
 app.use(cors());
 app.use(express.json());
 
+//Handle search function to Yelp API
 app.get("/api/yelp/search", async (req, res) => {
   const { term, location } = req.query;
   try {
@@ -29,6 +29,12 @@ app.get("/api/yelp/search", async (req, res) => {
   }
 });
 
+//Set route for users
+const usersRoute = require("./routes/users");
+
+app.use("/api/users", usersRoute);
+
+//Starting the server
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
 });
