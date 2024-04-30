@@ -34,6 +34,11 @@ const usersRoute = require("./routes/users");
 
 app.use("/api/users", usersRoute);
 
+// Set route for user sign-in
+const signinRoute = require("./routes/signin");
+
+app.use("/api/signin", signinRoute);
+
 //Starting the server
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
