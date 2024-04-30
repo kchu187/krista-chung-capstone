@@ -56,9 +56,7 @@ function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
   return <div ref={mapContainerRef} className="map"></div>;
 }
 
-function BeanMap({ selectedResult }) {
-  console.log("Selected result:", selectedResult);
-
+function BeanMap({ selectedResult, selectedBean }) {
   //Update the map center (make it move) when a result is clicked - but default is Calgary
   const [mapCenter, setMapCenter] = useState({
     lat: 51.041083366219205,
@@ -79,6 +77,14 @@ function BeanMap({ selectedResult }) {
       setMapCenter({ lat: latitude, lng: longitude });
     }
   }, [selectedResult]);
+
+  //If there is a selected Bean from Bean list, move the map to that bean
+  useEffect(() => {
+    if (selectedBean && selectedBean.coordinates) {
+      const { latitude, longitude } = selectedBean.coordinates;
+      setMapCenter({ lat: latitude, lng: longitude });
+    }
+  }, [selectedBean]);
 
   const handleAddBean = () => {
     setShowAddBeanForm(true); // Show the AddBeanForm when "Add a Bean" is clicked
