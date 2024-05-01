@@ -124,7 +124,7 @@ function BeanMap({ selectedResult, selectedBean }) {
       {showAddBeanForm && (
         <AddBeanForm
           onSubmit={handleFormSubmit}
-          restaurantName={selectedResult ? selectedResult.name : ""}
+          selectedResult={selectedResult}
         />
       )}
     </section>
