@@ -24,6 +24,7 @@ const HomePage = () => {
   const handleBeanClick = (bean) => {
     setShowEditBeanForm(true);
     setSelectedBean(bean);
+    setShowEditBeanForm(true);
     console.log(bean);
     setSelectedResult(null);
   };

@@ -65,4 +65,23 @@ router.post("/:userID/beans", async (req, res) => {
     res.status(500).json({ error: "Unable to add new bean" });
   }
 });
+
+//Put request for editing a user's bean
+router.put("/:userId/beans/:beanId", async (req, res) => {
+  const userId = req.params.userId;
+  const beanId = req.params.beanId;
+  const { userRating, comments } = req.body;
+
+  try {
+    await knex("beans")
+      .where({ id: beanId, user_id: userId })
+      .update({ userrating: userRating, comments: comments });
+
+    res.status(200).json({ message: "Bean updated successfully!" });
+  } catch (error) {
+    console.error("Error updating bean:", error);
+
+    res.status(500).json({ error: "Unable to update bean" });
+  }
+});
 module.exports = router;

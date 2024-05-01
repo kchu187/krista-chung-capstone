@@ -44,6 +44,7 @@ const AddBeanForm = ({ onSubmit, onClose, selectedResult, onBeanAdded }) => {
   const handleWishbeanToggle = () => {
     setWishbean(wishbean === "No" ? "Yes" : "No");
   };
+
   return (
     <form className="bean-form" onSubmit={handleSubmit}>
       <button onClick={onClose}>Close</button>

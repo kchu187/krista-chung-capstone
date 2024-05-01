@@ -123,14 +123,11 @@ function BeanMap({ selectedResult, selectedBean, onBeanAdded }) {
   return (
     <section className="bean-map">
       <MapComponent center={mapCenter} zoom={17} />
-      <BeanInfoBox
-        restaurant={selectedResult}
-        onClose={() => console.log("Close BeanInfoBox")}
-        onAddBean={handleAddBean}
-      />
+      <BeanInfoBox restaurant={selectedResult} onAddBean={handleAddBean} />
       {showAddBeanForm && (
         <AddBeanForm
           onSubmit={handleFormSubmit}
+          onClose={() => setShowAddBeanForm(false)}
           selectedResult={selectedResult}
           onBeanAdded={onBeanAdded}
         />
