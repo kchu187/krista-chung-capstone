@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function BeanList({ beans, onBeanClick }) {
+function BeanList({ beans, onBeanClick, refresh }) {
   const [myBeans, setMyBeans] = useState([]);
+
   useEffect(() => {
     const fetchBeans = async () => {
       try {
@@ -17,7 +18,7 @@ function BeanList({ beans, onBeanClick }) {
       }
     };
     fetchBeans();
-  }, []);
+  }, [refresh]);
 
   return (
     <section className="bean-list">

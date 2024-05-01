@@ -56,7 +56,7 @@ function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
   return <div ref={mapContainerRef} className="map"></div>;
 }
 
-function BeanMap({ selectedResult, selectedBean }) {
+function BeanMap({ selectedResult, selectedBean, onBeanAdded }) {
   //Update the map center (make it move) when a result is clicked - but default is Calgary
   const [mapCenter, setMapCenter] = useState({
     lat: 51.041083366219205,
@@ -65,6 +65,7 @@ function BeanMap({ selectedResult, selectedBean }) {
 
   //states for showing the BeanForm
   const [showAddBeanForm, setShowAddBeanForm] = useState(false);
+  const [refreshBeanList, setRefreshBeanList] = useState(false);
 
   useEffect(() => {
     // Check to ensure there are results, and a result was clicked
@@ -96,6 +97,9 @@ function BeanMap({ selectedResult, selectedBean }) {
     setShowAddBeanForm(false); // Hide the AddBeanForm after submission
   };
 
+  const handleBeanAdded = () => {
+    onBeanAdded();
+  };
   //If a bean is selected from the list, move the map to those coordinates and zoom
   if (selectedBean) {
     return (
@@ -112,7 +116,10 @@ function BeanMap({ selectedResult, selectedBean }) {
       </section>
     );
   }
-  // if there is a selected result, move the map to the selected coordinate
+
+  const refreshBeanListData = () => {
+    setRefreshBeanList((prev) => !prev);
+  };
   return (
     <section className="bean-map">
       <MapComponent center={mapCenter} zoom={17} />
@@ -125,6 +132,7 @@ function BeanMap({ selectedResult, selectedBean }) {
         <AddBeanForm
           onSubmit={handleFormSubmit}
           selectedResult={selectedResult}
+          onBeanAdded={onBeanAdded}
         />
       )}
     </section>

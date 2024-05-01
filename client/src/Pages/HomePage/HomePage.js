@@ -10,6 +10,7 @@ const HomePage = () => {
   const [selectedResult, setSelectedResult] = useState(null);
   const [selectedBean, setSelectedBean] = useState(null);
   const [showEditBeanForm, setShowEditBeanForm] = useState(false);
+  const [refreshBeanList, setRefreshBeanList] = useState(false);
 
   const handleSearch = (results) => {
     setSearchResults(results);
@@ -31,6 +32,9 @@ const HomePage = () => {
     setShowEditBeanForm(false); // Hide the form after submission
   };
 
+  const handleRefreshBeanList = () => {
+    setRefreshBeanList(!refreshBeanList);
+  };
   return (
     <>
       <SearchBar onSearch={handleSearch} />
@@ -38,8 +42,12 @@ const HomePage = () => {
         searchResults={searchResults}
         onResultClick={handleResultClick}
       />
-      <BeanMap selectedResult={selectedResult} selectedBean={selectedBean} />
-      <BeanList onBeanClick={handleBeanClick} />
+      <BeanMap
+        selectedResult={selectedResult}
+        selectedBean={selectedBean}
+        onBeanAdded={handleRefreshBeanList}
+      />
+      <BeanList onBeanClick={handleBeanClick} refresh={refreshBeanList} />
       {showEditBeanForm && selectedBean && (
         <EditBeanForm
           bean={selectedBean}

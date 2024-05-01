@@ -4,7 +4,7 @@ import ratedBean from "../../assets/images/bean.png";
 import notRatedBean from "../../assets/images/bean-norating.png";
 import { baseUrl } from "../../utils/utils";
 
-const AddBeanForm = ({ onSubmit, onClose, selectedResult }) => {
+const AddBeanForm = ({ onSubmit, onClose, selectedResult, onBeanAdded }) => {
   //State for bean rating
   const [rating, setRating] = useState(0);
   const [comments, setComments] = useState("");
@@ -27,6 +27,7 @@ const AddBeanForm = ({ onSubmit, onClose, selectedResult }) => {
       });
       console.log("Bean added successfully:", response.data);
 
+      onBeanAdded();
       onSubmit();
     } catch (error) {
       console.error("Errors adding bean:", error);
