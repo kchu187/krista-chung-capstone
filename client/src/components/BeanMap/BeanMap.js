@@ -3,8 +3,8 @@ import "./BeanMap.scss";
 import { Loader } from "@googlemaps/js-api-loader";
 import Bean from "../../assets/images/bean.png";
 import BeanInfoBox from "../BeanInfoBox/BeanInfoBox";
-import AddBeanForm from "../AddBeanForm/AddBeanForm";
-
+import AddBeanForm from "../BeanForm/AddBeanForm";
+import EditBeanForm from "../BeanForm/EditBeanForm";
 const googleMapsLoader = new Loader({
   apiKey: "AIzaSyD3hrKzV6JPwWbe_1oAowzXdnpTsOwaZXA",
   version: "weekly",
@@ -70,7 +70,7 @@ function BeanMap({ selectedResult, selectedBean }) {
     // Check to ensure there are results, and a result was clicked
     if (selectedResult && selectedResult.coordinates) {
       console.log("Selected result coordinates:", selectedResult.coordinates);
-
+      console.log(selectedResult);
       const { latitude, longitude } = selectedResult.coordinates;
 
       console.log("Updating map center:", { lat: latitude, lng: longitude });
@@ -96,8 +96,16 @@ function BeanMap({ selectedResult, selectedBean }) {
     setShowAddBeanForm(false); // Hide the AddBeanForm after submission
   };
 
-  // If there is no results selected, render default map
-  if (!selectedResult) {
+  //If a bean is selected from the list, move the map to those coordinates and zoom
+  if (selectedBean) {
+    return (
+      <section className="bean-map">
+        <MapComponent center={mapCenter} zoom={17} />
+      </section>
+    );
+  }
+
+  if (!selectedResult && !selectedBean) {
     return (
       <section className="bean-map">
         <MapComponent center={mapCenter} zoom={12} />

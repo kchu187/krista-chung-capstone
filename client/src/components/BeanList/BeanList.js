@@ -18,6 +18,7 @@ function BeanList({ beans, onBeanClick }) {
     };
     fetchBeans();
   }, []);
+
   return (
     <section className="bean-list">
       <h2> My Beans</h2>

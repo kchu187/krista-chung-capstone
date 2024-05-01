@@ -4,10 +4,12 @@ import BeanMap from "../../components/BeanMap/BeanMap";
 import SearchBar from "../../components/Search/SearchBar";
 import SearchResultsList from "../../components/Search/SearchResultsList";
 import BeanList from "../../components/BeanList/BeanList";
+import EditBeanForm from "../../components/BeanForm/EditBeanForm";
 const HomePage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedResult, setSelectedResult] = useState(null);
   const [selectedBean, setSelectedBean] = useState(null);
+  const [showEditBeanForm, setShowEditBeanForm] = useState(false);
 
   const handleSearch = (results) => {
     setSearchResults(results);
@@ -19,8 +21,14 @@ const HomePage = () => {
   };
 
   const handleBeanClick = (bean) => {
+    setShowEditBeanForm(true);
     setSelectedBean(bean);
+    console.log(bean);
     setSelectedResult(null);
+  };
+  const handleEditFormSubmit = (formData) => {
+    console.log("Form edited with data:", formData);
+    setShowEditBeanForm(false); // Hide the form after submission
   };
 
   return (
@@ -32,6 +40,13 @@ const HomePage = () => {
       />
       <BeanMap selectedResult={selectedResult} selectedBean={selectedBean} />
       <BeanList onBeanClick={handleBeanClick} />
+      {showEditBeanForm && selectedBean && (
+        <EditBeanForm
+          bean={selectedBean}
+          onSubmit={handleEditFormSubmit}
+          onClose={() => setShowEditBeanForm(false)}
+        />
+      )}
     </>
   );
 };
