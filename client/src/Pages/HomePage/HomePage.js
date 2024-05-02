@@ -5,6 +5,8 @@ import SearchBar from "../../components/Search/SearchBar";
 import SearchResultsList from "../../components/Search/SearchResultsList";
 import BeanList from "../../components/BeanList/BeanList";
 import EditBeanForm from "../../components/BeanForm/EditBeanForm";
+import Header from "../../components/Header/Header";
+
 const HomePage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedResult, setSelectedResult] = useState(null);
@@ -38,6 +40,7 @@ const HomePage = () => {
   };
   return (
     <>
+      <Header></Header>
       <SearchBar onSearch={handleSearch} />
       <SearchResultsList
         searchResults={searchResults}

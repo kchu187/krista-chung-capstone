@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-
+import Header from "../../components/Header/Header";
 const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,6 +34,7 @@ const SigninPage = () => {
   }
   return (
     <>
+      <Header></Header>
       <form onSubmit={handleSubmit}>
         <h1> Log in to add some beans! </h1>
         <input

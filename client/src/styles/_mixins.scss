@@ -1,0 +1,26 @@
+@import "./variables";
+@import "./fonts";
+@import "./colours";
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@font-face {
+  font-family: $font-family;
+  src: url(../assets/fonts/AlegreyaSans-Regular.ttf) format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: $font-family2;
+  src: url(../assets/fonts/AlegreyaSans-ExtraBold.ttf) format("truetype");
+  font-weight: 800;
+}
