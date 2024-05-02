@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import searchIcon from "../../assets/images/search-icon.png";
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,13 +36,15 @@ function SearchBar({ onSearch }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search for a restaurant..."
-        value={searchTerm}
-        onChange={handleChange}
-      />
-
+      <div className="search__container">
+        <img src={searchIcon} className="search__icon" alt="magnifying glass" />
+        <input
+          type="text"
+          placeholder="Search for a restaurant..."
+          value={searchTerm}
+          onChange={handleChange}
+        />
+      </div>
       <button type="submit" disabled={loading}>
         {" "}
         {loading ? "Searching..." : "Search"}{" "}
