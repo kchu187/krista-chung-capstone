@@ -6,14 +6,30 @@ import SearchResultsList from "../../components/Search/SearchResultsList";
 import BeanList from "../../components/BeanList/BeanList";
 import EditBeanForm from "../../components/BeanForm/EditBeanForm";
 import Header from "../../components/Header/Header";
-
+import axios from "axios";
 const HomePage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedResult, setSelectedResult] = useState(null);
   const [selectedBean, setSelectedBean] = useState(null);
   const [showEditBeanForm, setShowEditBeanForm] = useState(false);
   const [refreshBeanList, setRefreshBeanList] = useState(false);
+  const [beansData, setBeansData] = useState([]);
 
+  useEffect(() => {
+    const fetchBeansData = async () => {
+      try {
+        const userID = sessionStorage.getItem("userID");
+        const response = await axios.get(
+          `http://localhost:8080/api/users/${userID}/beans`
+        );
+        setBeansData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching beans data:", error);
+      }
+    };
+    fetchBeansData();
+  }, [refreshBeanList]);
   const handleSearch = (results) => {
     setSearchResults(results);
   };
@@ -50,6 +66,7 @@ const HomePage = () => {
         selectedResult={selectedResult}
         selectedBean={selectedBean}
         onBeanAdded={handleRefreshBeanList}
+        beansData={beansData}
       />
       <BeanList onBeanClick={handleBeanClick} refresh={refreshBeanList} />
       {showEditBeanForm && selectedBean && (

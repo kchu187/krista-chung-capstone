@@ -10,11 +10,17 @@ const googleMapsLoader = new Loader({
   version: "weekly",
 });
 
-function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
+function MapComponent({
+  center,
+  zoom,
+  selectedResult,
+  setSelectedResult,
+  beansData,
+}) {
   const [map, setMap] = useState(null);
   const mapContainerRef = useRef(null);
   const markers = [];
-
+  console.log(beansData);
   useEffect(() => {
     googleMapsLoader
       .load()
@@ -25,6 +31,12 @@ function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
           mapId: "82e8c7d0a07affc8",
         });
 
+        beansData.forEach((bean) => {
+          addMarker(
+            { lat: bean.coordinates.latitude, lng: bean.coordinates.longitude },
+            map
+          );
+        });
         map.addListener("click", (event) => {
           addMarker(event.latLng, map);
         });
@@ -33,13 +45,13 @@ function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
       .catch((error) => {
         console.error("Error loading Google Maps API:", error);
       });
-  }, [center, zoom]);
+  }, [beansData, center, zoom]);
 
   useEffect(() => {
     if (map) {
       map.setCenter(center); // Update map center when center changes
     }
-  }, [center]);
+  }, [center, map]);
 
   const addMarker = (location, map) => {
     const marker = new window.google.maps.Marker({
@@ -56,7 +68,7 @@ function MapComponent({ center, zoom, selectedResult, setSelectedResult }) {
   return <div ref={mapContainerRef} className="map"></div>;
 }
 
-function BeanMap({ selectedResult, selectedBean, onBeanAdded }) {
+function BeanMap({ selectedResult, selectedBean, onBeanAdded, beansData }) {
   //Update the map center (make it move) when a result is clicked - but default is Calgary
   const [mapCenter, setMapCenter] = useState({
     lat: 51.041083366219205,
@@ -104,7 +116,7 @@ function BeanMap({ selectedResult, selectedBean, onBeanAdded }) {
   if (selectedBean) {
     return (
       <section className="bean-map">
-        <MapComponent center={mapCenter} zoom={17} />
+        <MapComponent center={mapCenter} zoom={17} beansData={beansData} />
       </section>
     );
   }
@@ -112,7 +124,7 @@ function BeanMap({ selectedResult, selectedBean, onBeanAdded }) {
   if (!selectedResult && !selectedBean) {
     return (
       <section className="bean-map">
-        <MapComponent center={mapCenter} zoom={12} />
+        <MapComponent center={mapCenter} zoom={12} beansData={beansData} />
       </section>
     );
   }
@@ -122,7 +134,7 @@ function BeanMap({ selectedResult, selectedBean, onBeanAdded }) {
   };
   return (
     <section className="bean-map">
-      <MapComponent center={mapCenter} zoom={17} />
+      <MapComponent center={mapCenter} zoom={17} beansData={beansData} />
       <BeanInfoBox restaurant={selectedResult} onAddBean={handleAddBean} />
       {showAddBeanForm && (
         <AddBeanForm
