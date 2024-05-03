@@ -1,0 +1,38 @@
+@use "../..//styles/mixins" as *;
+
+.bean-info-box {
+  position: absolute;
+  left: 1rem;
+  background: $light-pink;
+  padding: 1rem;
+  border-radius: 2rem;
+  box-shadow: 5px 4px 8px 0px grey;
+  font-size: 1rem;
+
+  @include desktop {
+    padding: 2rem;
+    width: 19%;
+    font-size: 1.8rem;
+  }
+
+  &__button {
+    border-radius: 1rem;
+    width: fit-content;
+    height: 2rem;
+    background: white;
+    border: none;
+    background-color: $beige;
+    color: $purple;
+    padding: 0.7rem;
+
+    &:hover {
+      background-color: $purple;
+      color: $beige;
+    }
+
+    @include desktop {
+      font-size: 1.3rem;
+      height: auto;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@use "../..//styles/mixins" as *;
+
+.beanmap-container {
+  @include desktop {
+    display: flex;
+    justify-content: space-around;
+    height: 52rem;
+  }
+}

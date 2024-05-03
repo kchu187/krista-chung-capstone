@@ -1,0 +1,59 @@
+@use "../..//styles/mixins" as *;
+
+.search {
+  &__container {
+    display: flex;
+    background-color: $light-purple;
+    border: solid 0.1rem $beige;
+    padding: 0.8rem;
+    justify-content: center;
+    gap: 2rem;
+  }
+  &__sub-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  &__icon {
+    width: 1.5rem;
+    @include desktop {
+      width: 2.5rem;
+    }
+  }
+
+  &__input {
+    font-family: $font-family;
+    border: none;
+    background: $light-purple;
+    color: $beige;
+    font-size: 1rem;
+    &::placeholder {
+      color: $beige;
+    }
+    &:focus {
+      background-color: $light-purple;
+      border: none;
+      outline: none;
+    }
+
+    @include desktop {
+      font-size: 2rem;
+    }
+  }
+
+  &__button {
+    border-radius: 1rem;
+    width: fit-content;
+    height: 2rem;
+    background: white;
+    border: none;
+    background-color: $beige;
+    color: $purple;
+    padding: 0.7rem;
+
+    @include desktop {
+      height: auto;
+      font-size: 1.3rem;
+    }
+  }
+}

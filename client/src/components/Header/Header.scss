@@ -1,0 +1,16 @@
+@use "../../styles/mixins" as *;
+
+.header {
+  background-color: $light-pink;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  &__logo {
+    width: 9rem;
+  }
+  &__avatar {
+    width: 4rem;
+  }
+}

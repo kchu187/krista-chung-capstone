@@ -1,0 +1,19 @@
+@use "../../styles/mixins" as *;
+.bean-map {
+  display: flex;
+  flex-direction: row;
+
+  @include desktop {
+    padding: 2rem;
+  }
+}
+.map {
+  height: 43rem;
+  width: -webkit-fill-available;
+
+  @include desktop {
+    width: 63vw;
+    border-radius: 2rem;
+    overflow: scroll;
+  }
+}

@@ -1,0 +1,13 @@
+$font-family: "Alegreya Sans";
+$font-family2: "Alegraya Sans Bold";
+
+@font-face {
+  font-family: "Alegraya Sans";
+  src: url(../assets/fonts/AlegreyaSans-Regular.ttf) format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Alegraya Sans Bold";
+  src: url(../assets/fonts/AlegreyaSans-ExtraBold.ttf) format("truetype");
+  font-weight: 800;
+}
