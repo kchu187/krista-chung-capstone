@@ -42,7 +42,9 @@ function EditBeanForm({ bean, onSubmit, onClose }) {
 
   return (
     <form className="bean-form--edit" onSubmit={handleSubmit}>
-      <button onClick={onClose}>Close</button>
+      <button className="bean-form__button" onClick={onClose}>
+        Close
+      </button>
 
       <h2>Edit your bean for {bean.name}</h2>
       <div className="bean-form__rating">
@@ -67,7 +69,9 @@ function EditBeanForm({ bean, onSubmit, onClose }) {
         onChange={handleCommentsChange}
       />
       <br />
-      <button type="submit">Submit</button>
+      <button className="bean-form__button" type="submit">
+        Submit
+      </button>
     </form>
   );
 }

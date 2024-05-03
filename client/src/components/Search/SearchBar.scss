@@ -5,7 +5,9 @@
     display: flex;
     background-color: $light-purple;
     border: solid 0.1rem $beige;
-    padding: 0.5rem;
+    padding: 0.8rem;
+    justify-content: center;
+    gap: 2rem;
   }
   &__sub-container {
     display: flex;
@@ -14,6 +16,9 @@
   }
   &__icon {
     width: 1.5rem;
+    @include desktop {
+      width: 2.5rem;
+    }
   }
 
   &__input {
@@ -30,6 +35,10 @@
       border: none;
       outline: none;
     }
+
+    @include desktop {
+      font-size: 2rem;
+    }
   }
 
   &__button {
@@ -41,5 +50,10 @@
     background-color: $beige;
     color: $purple;
     padding: 0.7rem;
+
+    @include desktop {
+      height: auto;
+      font-size: 1.3rem;
+    }
   }
 }

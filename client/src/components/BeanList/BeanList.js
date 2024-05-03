@@ -23,7 +23,7 @@ function BeanList({ beans, onBeanClick, refresh }) {
 
   return (
     <section className="bean-list">
-      <h2> My Beans</h2>
+      <h2 className="bean-list__heading"> My Beans</h2>
       <ul className="bean-list__restaurants">
         {myBeans.map((bean) => (
           <li key={bean.id} onClick={() => onBeanClick(bean)}>

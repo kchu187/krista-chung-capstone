@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import "./SigninPage.scss";
+
 const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,21 +37,27 @@ const SigninPage = () => {
   return (
     <>
       <Header></Header>
-      <form onSubmit={handleSubmit}>
-        <h1> Log in to add some beans! </h1>
+      <form className="sign-in" onSubmit={handleSubmit}>
+        <h1 className="sign-in__heading"> Log in to add some beans! </h1>
+        <h3 className="sign-in__field-title">Email</h3>
         <input
+          className="sign-in__form-fields"
           name="email"
           type="text"
           placeholder="Email"
           onChange={(event) => setEmail(event.target.value)}
         />
+        <h3 className="sign-in__field-title">Password</h3>
         <input
+          className="sign-in__form-fields"
           name="password"
           type="password"
           placeholder="Password"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button type="submit">Log In</button>
+        <button className="sign-in__button" type="submit">
+          Log In
+        </button>
         {error && <p>{error}</p>}
       </form>
     </>

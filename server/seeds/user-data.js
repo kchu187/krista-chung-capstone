@@ -12,5 +12,12 @@ exports.seed = async function (knex) {
       email: "kchung187@gmail.com",
       password: "Test123",
     },
+
+    {
+      id: 2,
+      name: "Brainstation",
+      email: "brainstation@brainstation.com",
+      password: "Test123",
+    },
   ]);
 };

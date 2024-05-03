@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import "./HomePage.scss";
 import BeanMap from "../../components/BeanMap/BeanMap";
 import SearchBar from "../../components/Search/SearchBar";
 import SearchResultsList from "../../components/Search/SearchResultsList";
@@ -15,6 +15,7 @@ const HomePage = () => {
   const [refreshBeanList, setRefreshBeanList] = useState(false);
   const [beansData, setBeansData] = useState([]);
 
+  //Fetch bean data to pass to beanmap, which will render markers based on fetched coordinates
   useEffect(() => {
     const fetchBeansData = async () => {
       try {
@@ -23,13 +24,13 @@ const HomePage = () => {
           `http://localhost:8080/api/users/${userID}/beans`
         );
         setBeansData(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching beans data:", error);
       }
     };
     fetchBeansData();
   }, [refreshBeanList]);
+
   const handleSearch = (results) => {
     setSearchResults(results);
   };
@@ -43,7 +44,6 @@ const HomePage = () => {
     setShowEditBeanForm(true);
     setSelectedBean(bean);
     setShowEditBeanForm(true);
-    console.log(bean);
     setSelectedResult(null);
   };
   const handleEditFormSubmit = (formData) => {
@@ -62,20 +62,22 @@ const HomePage = () => {
         searchResults={searchResults}
         onResultClick={handleResultClick}
       />
-      <BeanMap
-        selectedResult={selectedResult}
-        selectedBean={selectedBean}
-        onBeanAdded={handleRefreshBeanList}
-        beansData={beansData}
-      />
-      <BeanList onBeanClick={handleBeanClick} refresh={refreshBeanList} />
-      {showEditBeanForm && selectedBean && (
-        <EditBeanForm
-          bean={selectedBean}
-          onSubmit={handleEditFormSubmit}
-          onClose={() => setShowEditBeanForm(false)}
+      <div className="beanmap-container">
+        <BeanMap
+          selectedResult={selectedResult}
+          selectedBean={selectedBean}
+          onBeanAdded={handleRefreshBeanList}
+          beansData={beansData}
         />
-      )}
+        <BeanList onBeanClick={handleBeanClick} refresh={refreshBeanList} />
+        {showEditBeanForm && selectedBean && (
+          <EditBeanForm
+            bean={selectedBean}
+            onSubmit={handleEditFormSubmit}
+            onClose={() => setShowEditBeanForm(false)}
+          />
+        )}
+      </div>
     </>
   );
 };

@@ -5,8 +5,10 @@ import Bean from "../../assets/images/bean.png";
 import BeanInfoBox from "../BeanInfoBox/BeanInfoBox";
 import AddBeanForm from "../BeanForm/AddBeanForm";
 import EditBeanForm from "../BeanForm/EditBeanForm";
+import { googleMapsApiKey } from "../../utils/utils";
+
 const googleMapsLoader = new Loader({
-  apiKey: "AIzaSyD3hrKzV6JPwWbe_1oAowzXdnpTsOwaZXA",
+  apiKey: googleMapsApiKey,
   version: "weekly",
 });
 
@@ -20,7 +22,6 @@ function MapComponent({
   const [map, setMap] = useState(null);
   const mapContainerRef = useRef(null);
   const markers = [];
-  console.log(beansData);
   useEffect(() => {
     googleMapsLoader
       .load()
@@ -37,9 +38,7 @@ function MapComponent({
             map
           );
         });
-        map.addListener("click", (event) => {
-          addMarker(event.latLng, map);
-        });
+
         setMap(map);
       })
       .catch((error) => {
@@ -82,11 +81,8 @@ function BeanMap({ selectedResult, selectedBean, onBeanAdded, beansData }) {
   useEffect(() => {
     // Check to ensure there are results, and a result was clicked
     if (selectedResult && selectedResult.coordinates) {
-      console.log("Selected result coordinates:", selectedResult.coordinates);
-      console.log(selectedResult);
       const { latitude, longitude } = selectedResult.coordinates;
 
-      console.log("Updating map center:", { lat: latitude, lng: longitude });
       setMapCenter({ lat: latitude, lng: longitude });
     }
   }, [selectedResult]);

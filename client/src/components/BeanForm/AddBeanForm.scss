@@ -9,14 +9,37 @@
   padding: 1.5rem;
   box-shadow: 5px 4px 8px 0px grey;
   border: 0.2rem $light-pink;
+
+  @include desktop {
+    border-radius: 1rem;
+  }
   &__rating-images {
     width: 2rem;
     margin: 0.4rem;
+
+    @include desktop {
+      width: 7rem;
+    }
+  }
+  & h2 {
+    font-size: 2rem;
   }
 
+  & p {
+    font-size: 1.3rem;
+  }
+  & label {
+    font-size: 1.3rem;
+  }
   &__comments {
     width: 16rem;
     height: 12rem;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    @include desktop {
+      width: 37rem;
+    }
   }
 
   &__button {
@@ -32,6 +55,11 @@
 
   &--edit {
     @extend .bean-form;
-    top: 20rem;
+    top: 70%;
+    position: absolute;
+
+    @include desktop {
+      top: 12rem;
+    }
   }
 }

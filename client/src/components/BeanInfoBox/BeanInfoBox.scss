@@ -7,6 +7,13 @@
   padding: 1rem;
   border-radius: 2rem;
   box-shadow: 5px 4px 8px 0px grey;
+  font-size: 1rem;
+
+  @include desktop {
+    padding: 2rem;
+    width: 19%;
+    font-size: 1.8rem;
+  }
 
   &__button {
     border-radius: 1rem;
@@ -21,6 +28,11 @@
     &:hover {
       background-color: $purple;
       color: $beige;
+    }
+
+    @include desktop {
+      font-size: 1.3rem;
+      height: auto;
     }
   }
 }
