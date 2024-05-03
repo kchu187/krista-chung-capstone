@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import searchIcon from "../../assets/images/search-icon.png";
+import "./SearchBar.scss";
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,17 +36,18 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="search__container">
+    <form className="search__container" onSubmit={handleSubmit}>
+      <div className="search__sub-container">
         <img src={searchIcon} className="search__icon" alt="magnifying glass" />
         <input
+          className="search__input"
           type="text"
           placeholder="Search for a restaurant..."
           value={searchTerm}
           onChange={handleChange}
         />
       </div>
-      <button type="submit" disabled={loading}>
+      <button className="search__button" type="submit" disabled={loading}>
         {" "}
         {loading ? "Searching..." : "Search"}{" "}
       </button>

@@ -30,7 +30,7 @@ const SigninPage = () => {
   };
 
   if (loggedIn) {
-    return <Navigate to="/" />;
+    return <Navigate to="/beanmap" />;
   }
   return (
     <>
