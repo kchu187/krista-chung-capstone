@@ -1,0 +1,14 @@
+@use "../../styles/mixins" as *;
+
+.search-list {
+  color: $beige;
+  padding-left: 2rem;
+
+  &__item {
+    padding-left: 2rem;
+    background-image: url("../../assets/images/search-icon.png");
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    background-position: left center;
+  }
+}

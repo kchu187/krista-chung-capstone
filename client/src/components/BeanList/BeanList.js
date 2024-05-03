@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "./BeanList.scss";
+import beanIcon from "../../assets/images/bean.png";
 function BeanList({ beans, onBeanClick, refresh }) {
   const [myBeans, setMyBeans] = useState([]);
 
@@ -23,7 +24,7 @@ function BeanList({ beans, onBeanClick, refresh }) {
   return (
     <section className="bean-list">
       <h2> My Beans</h2>
-      <ul>
+      <ul className="bean-list__restaurants">
         {myBeans.map((bean) => (
           <li key={bean.id} onClick={() => onBeanClick(bean)}>
             {bean.name}

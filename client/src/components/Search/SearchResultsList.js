@@ -1,3 +1,5 @@
+import "./SearchResultsList.scss";
+
 const SearchResultsList = ({ searchResults, onResultClick }) => {
   const handleResultClick = (result) => {
     onResultClick(result);

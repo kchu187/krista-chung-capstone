@@ -1,0 +1,22 @@
+@use "../../styles/mixins" as *;
+
+.bean-list {
+  color: $beige;
+  filter: drop-shadow(0px 2px 0px black);
+
+  &__restaurants {
+    filter: none;
+    border-top: 0.1rem solid;
+    padding-top: 0.5rem;
+    font-size: 1.5rem;
+    list-style: none;
+
+    & li {
+      padding-left: 2rem;
+      background-image: url("../../assets/images/bean.png");
+      background-repeat: no-repeat;
+      background-size: 1.5rem;
+      background-position: left center;
+    }
+  }
+}
