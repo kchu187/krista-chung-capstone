@@ -3,7 +3,7 @@ import axios from "axios";
 import ratedBean from "../../assets/images/bean.png";
 import notRatedBean from "../../assets/images/bean-norating.png";
 import { baseUrl } from "../../utils/utils";
-
+import "./AddBeanForm.scss";
 const AddBeanForm = ({ onSubmit, onClose, selectedResult, onBeanAdded }) => {
   //State for bean rating
   const [rating, setRating] = useState(0);
@@ -47,7 +47,9 @@ const AddBeanForm = ({ onSubmit, onClose, selectedResult, onBeanAdded }) => {
 
   return (
     <form className="bean-form" onSubmit={handleSubmit}>
-      <button onClick={onClose}>Close</button>
+      <button className="bean-form__button" onClick={onClose}>
+        Close
+      </button>
       <label>
         <input
           type="checkbox"
@@ -74,6 +76,7 @@ const AddBeanForm = ({ onSubmit, onClose, selectedResult, onBeanAdded }) => {
       <label>Comments:</label>
       <br></br>
       <textarea
+        className="bean-form__comments"
         type="text"
         id="comments"
         name="comments"
@@ -81,7 +84,9 @@ const AddBeanForm = ({ onSubmit, onClose, selectedResult, onBeanAdded }) => {
         onChange={handleCommentsChange}
       />
       <br />
-      <button type="submit">Submit</button>
+      <button className="bean-form__button" type="submit">
+        Submit
+      </button>
     </form>
   );
 };

@@ -41,7 +41,7 @@ function EditBeanForm({ bean, onSubmit, onClose }) {
   };
 
   return (
-    <form className="bean-form" onSubmit={handleSubmit}>
+    <form className="bean-form--edit" onSubmit={handleSubmit}>
       <button onClick={onClose}>Close</button>
 
       <h2>Edit your bean for {bean.name}</h2>
@@ -60,6 +60,7 @@ function EditBeanForm({ bean, onSubmit, onClose }) {
       <label> Comments:</label>
       <br></br>
       <textarea
+        className="bean-form__comments"
         type="text"
         id="comments"
         value={comments}
