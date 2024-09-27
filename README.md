@@ -119,8 +119,6 @@ Authentication won't be implemented in Phase 1, but will be under nice-to-have. 
 
 ## Roadmap
 
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
-
 ### Sprint -1 April 8-15
 
 - Initial project proposal handed in, receive feedback from TA
@@ -152,3 +150,16 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 - Be able to add other users to your network, to view and share their bean map
 - Have hidden and non-hidden bean ratings
 - Be able to comment on someone's bean map
+
+## Screenshots of the app
+
+![mobile searching for a bean](https://github.com/user-attachments/assets/07e64171-07be-4a3d-aa8a-9b25ddf6d4b8)
+![mobile login](https://github.com/user-attachments/assets/52206c7d-a013-4715-a1ab-a20908f6fb1e)
+![mobile edit bean](https://github.com/user-attachments/assets/46786033-a1f8-4a8b-b71e-d8f2420efa88)
+![mobile bean map](https://github.com/user-attachments/assets/04519f5a-7d54-432f-9e31-3b6a17fc77cf)
+![mobile add bean](https://github.com/user-attachments/assets/f1722076-54fd-4b79-a89b-1f6f3ef164f0)
+![desktop select a bean](https://github.com/user-attachments/assets/629d5129-1560-47e6-a43f-1bf81d98f6a1)
+![desktop login](https://github.com/user-attachments/assets/54992d12-1b5f-4887-a9b2-1b8e3ddef641)
+![desktop edit bean form](https://github.com/user-attachments/assets/8416ab6e-41c6-470f-9722-c126fb27de91)
+![desktop default bean map](https://github.com/user-attachments/assets/21084cb9-bfce-45c9-896d-7cfc3f6ec9c3)
+![desktop add bean form](https://github.com/user-attachments/assets/c1d325d7-c872-4efe-8ba7-ce36ecf56b08)
